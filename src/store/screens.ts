@@ -5,6 +5,7 @@ export type Screen =
   | "outage"
   | "outOfMinutes"
   | "intro"
+  | "userProfile"
   | "instructions"
   | "settings"
   | "conversation"

@@ -12,6 +12,9 @@ import {
   FinalScreen,
   Settings,
 } from "./screens";
+import { UserProfileForm } from "./screens/UserProfileForm";
+import { InterviewSession } from "./screens/InterviewSession";
+import { InterviewFeedback } from "./screens/InterviewFeedback";
 
 function App() {
   const [{ currentScreen }] = useAtom(screenAtom);
@@ -26,14 +29,16 @@ function App() {
         return <OutOfMinutes />;
       case "intro":
         return <Intro />;
+      case "userProfile":
+        return <UserProfileForm />;
       case "settings":
         return <Settings />;
       case "instructions":
         return <Instructions />;
       case "conversation":
-        return <Conversation />;
+        return <InterviewSession />;
       case "finalScreen":
-        return <FinalScreen />;
+        return <InterviewFeedback />;
       default:
         return <IntroLoading />;
     }
