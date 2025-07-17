@@ -5,7 +5,7 @@ export { Intro } from "./Intro";
 export { UserProfileForm } from "./UserProfileForm";
 export { Instructions } from "./Instructions";
 export { ConversationLoading } from "./ConversationLoading";
-export { Conversation } from "./Conversation";
+export { InterviewInterface } from "./InterviewInterface";
 export { InterviewSession } from "./InterviewSession";
 export { FinalScreen } from "./FinalScreen";
 export { InterviewFeedback } from "./InterviewFeedback";

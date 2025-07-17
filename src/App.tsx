@@ -8,7 +8,7 @@ import {
   OutOfMinutes,
   Intro,
   Instructions,
-  Conversation,
+  InterviewInterface,
   FinalScreen,
   Settings,
 } from "./screens";
@@ -36,7 +36,7 @@ function App() {
       case "instructions":
         return <Instructions />;
       case "conversation":
-        return <InterviewSession />;
+        return <InterviewInterface />;
       case "finalScreen":
         return <InterviewFeedback />;
       default:

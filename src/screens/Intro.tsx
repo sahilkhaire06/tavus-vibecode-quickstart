@@ -13,7 +13,7 @@ export const Intro: React.FC = () => {
   const [token, setToken] = useAtom(apiTokenAtom);
 
   const handleClick = () => {
-    setScreenState({ currentScreen: "userProfile" });
+    setScreenState({ currentScreen: "conversation" });
   };
 
   return (
