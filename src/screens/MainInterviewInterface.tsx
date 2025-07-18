@@ -15,15 +15,12 @@ export const MainInterviewInterface: React.FC = () => {
   const daily = useDaily();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [token, setToken] = useState<string>("");
-  const [showTokenInput, setShowTokenInput] = useState(true);
+  const token = "ccf420ac09f648a4a6d2f4035e7d31e9"; // Your Tavus API token
   
 
   useEffect(() => {
-    if (token && !showTokenInput) {
-      initializeInterview();
-    }
-  }, [token, showTokenInput]);
+    initializeInterview();
+  }, []);
 
   const initializeInterview = async () => {
     try {
@@ -59,51 +56,6 @@ export const MainInterviewInterface: React.FC = () => {
     }
   };
 
-  const handleTokenSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (token.trim()) {
-      setShowTokenInput(false);
-    }
-  };
-
-  if (showTokenInput) {
-    return (
-      <div className="flex items-center justify-center h-screen bg-gray-50">
-        <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
-          <div className="text-center mb-6">
-            <h2 className="text-2xl font-bold text-gray-800 mb-2">Enter Tavus API Token</h2>
-            <p className="text-gray-600 text-sm">
-              Get your API token from{" "}
-              <a 
-                href="https://platform.tavus.io" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:underline"
-              >
-                Tavus Platform
-              </a>
-            </p>
-          </div>
-          <form onSubmit={handleTokenSubmit}>
-            <input
-              type="password"
-              value={token}
-              onChange={(e) => setToken(e.target.value)}
-              placeholder="Enter your Tavus API token"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-4"
-              required
-            />
-            <button
-              type="submit"
-              className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              Start Interview
-            </button>
-          </form>
-        </div>
-      </div>
-    );
-  }
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-screen bg-gray-50">
@@ -128,12 +80,6 @@ export const MainInterviewInterface: React.FC = () => {
           <h2 className="text-gray-800 text-2xl font-semibold mb-2">Connection Error</h2>
           <p className="text-gray-600 mb-6">{error}</p>
           <div className="space-y-3">
-            <button
-              onClick={() => setShowTokenInput(true)}
-              className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors w-full"
-            >
-              Enter New Token
-            </button>
             <button
               onClick={initializeInterview}
               className="bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors w-full"
