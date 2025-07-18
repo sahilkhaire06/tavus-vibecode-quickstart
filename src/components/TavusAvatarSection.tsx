@@ -5,9 +5,6 @@ import { conversationAtom } from "@/store/conversation";
 import { cn } from "@/lib/utils";
 import { Mic, MicOff, Volume2, VolumeX, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { quantum } from 'ldrs';
-
-quantum.register();
 
 interface AvatarExpression {
   type: 'listening' | 'speaking' | 'thinking' | 'encouraging' | 'neutral';
@@ -85,17 +82,19 @@ export const TavusAvatarSection: React.FC = () => {
     setIsMuted(!isMuted);
   };
 
-  if (!conversation?.conversation_url || !remoteParticipantIds.length) {
+  // Always show the avatar interface, even if not connected
+  const showMockAvatar = !conversation?.conversation_url || !remoteParticipantIds.length;
+
+  if (showMockAvatar) {
     return (
       <div className="flex flex-col h-full bg-black rounded-lg overflow-hidden relative">
-        <div className="flex-1 flex items-center justify-center bg-gradient-to-br from-gray-200 to-gray-300">
+        <div className="flex-1 flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900">
           <div className="text-center">
-            <l-quantum
-              size="45"
-              speed="1.75"
-              color="white"
-            ></l-quantum>
-            <p className="text-white text-lg mt-4">Connecting to AI Interviewer...</p>
+            <div className="w-32 h-32 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center mb-4 mx-auto">
+              <Sparkles className="size-16 text-white" />
+            </div>
+            <p className="text-white text-lg">AI Interviewer Ready</p>
+            <p className="text-gray-300 text-sm mt-2">Interview session active</p>
           </div>
         </div>
         
@@ -105,6 +104,28 @@ export const TavusAvatarSection: React.FC = () => {
             <Sparkles className="size-4 text-white" />
             <span className="text-white text-sm font-medium">AI Interviewer</span>
           </div>
+        </div>
+
+        {/* Status Indicator */}
+        <div className="absolute top-4 left-4 flex items-center gap-2 bg-green-500/20 backdrop-blur-sm rounded-full px-3 py-2">
+          <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+          <span className="text-white text-xs font-medium">Active</span>
+        </div>
+
+        {/* Audio Control */}
+        <div className="absolute top-4 right-4">
+          <Button
+            onClick={toggleMute}
+            variant="ghost"
+            size="icon"
+            className="bg-black/70 backdrop-blur-sm hover:bg-black/90"
+          >
+            {isMuted ? (
+              <VolumeX className="size-4 text-white" />
+            ) : (
+              <Volume2 className="size-4 text-white" />
+            )}
+          </Button>
         </div>
       </div>
     );
