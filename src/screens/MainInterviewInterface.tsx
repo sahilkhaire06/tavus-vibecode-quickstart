@@ -11,7 +11,7 @@ export const MainInterviewInterface: React.FC = () => {
   const [conversation, setConversation] = useAtom(conversationAtom);
   const daily = useDaily();
   const [isLoading, setIsLoading] = useState(false);
-  const token = "ccf420ac09f648a4a6d2f4035e7d31e9"; // Your Tavus API token
+  const token = "3460a9d2f55f4c4dbf7d139c749e17ae"; // Your Tavus API token
   
   const [retryCount, setRetryCount] = useState(0);
   const maxRetries = 3;
