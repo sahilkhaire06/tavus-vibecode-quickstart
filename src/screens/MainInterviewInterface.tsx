@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useAtom, useAtomValue } from "jotai";
+import { useAtom } from "jotai";
 import { UserVideoSection } from "@/components/UserVideoSection";
 import { TavusAvatarSection } from "@/components/TavusAvatarSection";
 import { InterviewChat } from "@/components/InterviewChat";
 import { conversationAtom } from "@/store/conversation";
-import { screenAtom } from "@/store/screens";
 import { createConversation } from "@/api";
-import { apiTokenAtom } from "@/store/tokens";
 import { useDaily } from "@daily-co/daily-react";
 import { quantum } from 'ldrs';
 
@@ -14,11 +12,12 @@ quantum.register();
 
 export const MainInterviewInterface: React.FC = () => {
   const [conversation, setConversation] = useAtom(conversationAtom);
-  const [, setScreenState] = useAtom(screenAtom);
-  const token = useAtomValue(apiTokenAtom);
   const daily = useDaily();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  
+  // Use a default token for demo purposes
+  const token = "demo-token-replace-with-actual";
 
   useEffect(() => {
     initializeInterview();
@@ -27,10 +26,6 @@ export const MainInterviewInterface: React.FC = () => {
   const initializeInterview = async () => {
     try {
       setIsLoading(true);
-      
-      if (!token) {
-        throw new Error("API token is required");
-      }
 
       // Create conversation
       const newConversation = await createConversation(token);

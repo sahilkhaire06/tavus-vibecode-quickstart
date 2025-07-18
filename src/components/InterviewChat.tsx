@@ -46,36 +46,10 @@ const initialMessages: ChatMessage[] = [
   {
     id: '1',
     type: 'avatar',
-    content: "Hi Aditya Khaire! 👋 I'm excited to chat with you today! I've had a chance to look through your background, and I'd love to hear more about your journey. Could you tell me what drives you in your career and what you're passionate about?",
+    content: "Hello! 👋 I'm excited to conduct your interview today! I'll be asking you questions across different areas to better understand your background and capabilities. Could you start by telling me about yourself and what drives you in your career?",
     timestamp: Date.now() - 300000,
     stage: 'Introductory'
   },
-  {
-    id: '2',
-    type: 'user',
-    content: "hello sir",
-    timestamp: Date.now() - 270000
-  },
-  {
-    id: '3',
-    type: 'avatar',
-    content: "It's great to meet you too, Aditya! So you've got a BTech in Computer Science from VIT – that's awesome! 🚀 Your resume mentions quite a range of skills, from backend and web development to mobile apps and C. Out of all of those, what area are you most passionate about these days, and what kind of projects really get you excited? 🤔",
-    timestamp: Date.now() - 240000,
-    stage: 'Introduction'
-  },
-  {
-    id: '4',
-    type: 'user',
-    content: "I'm pretty comfortable across the stack, to be honest. I'm happy working on both front-end and back-end, though I guess if I had to choose I'd probably say web development. I find building user interfaces pretty satisfying.",
-    timestamp: Date.now() - 180000
-  },
-  {
-    id: '5',
-    type: 'avatar',
-    content: "Excellent insights! Let's dive into your technical expertise. 🔧 Since you enjoy building user interfaces, imagine you're designing a website for a popular online bookstore. Suddenly, the search feature stops working and customers can't find any books! 📚 How would you approach debugging this issue, step by step?",
-    timestamp: Date.now() - 120000,
-    stage: 'Reasoning'
-  }
 ];
 
 export const InterviewChat: React.FC = () => {

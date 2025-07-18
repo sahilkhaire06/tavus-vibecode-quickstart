@@ -87,23 +87,23 @@ export const TavusAvatarSection: React.FC = () => {
 
   if (!conversation?.conversation_url || !remoteParticipantIds.length) {
     return (
-      <div className="flex flex-col h-full bg-gray-100 rounded-lg overflow-hidden relative">
+      <div className="flex flex-col h-full bg-black rounded-lg overflow-hidden relative">
         <div className="flex-1 flex items-center justify-center bg-gradient-to-br from-gray-200 to-gray-300">
           <div className="text-center">
             <l-quantum
               size="45"
               speed="1.75"
-              color="#6B7280"
+              color="white"
             ></l-quantum>
-            <p className="text-gray-600 text-lg mt-4">Connecting to AI Interviewer...</p>
+            <p className="text-white text-lg mt-4">Connecting to AI Interviewer...</p>
           </div>
         </div>
         
         {/* AI Interviewer Label */}
-        <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-2 shadow-sm">
+        <div className="absolute bottom-4 left-4 bg-black/70 backdrop-blur-sm rounded-lg px-3 py-2">
           <div className="flex items-center gap-2">
-            <Sparkles className="size-4 text-blue-600" />
-            <span className="text-gray-800 text-sm font-medium">AI Interviewer</span>
+            <Sparkles className="size-4 text-white" />
+            <span className="text-white text-sm font-medium">AI Interviewer</span>
           </div>
         </div>
       </div>
@@ -111,7 +111,7 @@ export const TavusAvatarSection: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-col h-full bg-gray-100 rounded-lg overflow-hidden relative">
+    <div className="flex flex-col h-full bg-black rounded-lg overflow-hidden relative">
       {/* Avatar Video */}
       <div className="flex-1 relative">
         <DailyVideo
@@ -124,15 +124,15 @@ export const TavusAvatarSection: React.FC = () => {
         {getAvatarOverlay()}
         
         {/* AI Interviewer Label */}
-        <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-2 shadow-sm">
+        <div className="absolute bottom-4 left-4 bg-black/70 backdrop-blur-sm rounded-lg px-3 py-2">
           <div className="flex items-center gap-2">
-            <Sparkles className="size-4 text-blue-600" />
-            <span className="text-gray-800 text-sm font-medium">AI Interviewer</span>
+            <Sparkles className="size-4 text-white" />
+            <span className="text-white text-sm font-medium">AI Interviewer</span>
           </div>
         </div>
 
         {/* Status Indicator */}
-        <div className="absolute top-4 left-4 flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-full px-3 py-2 shadow-sm">
+        <div className="absolute top-4 left-4 flex items-center gap-2 bg-black/70 backdrop-blur-sm rounded-full px-3 py-2">
           <div 
             className={cn(
               "w-2 h-2 rounded-full transition-colors duration-300",
@@ -145,7 +145,7 @@ export const TavusAvatarSection: React.FC = () => {
               }
             )}
           />
-          <span className="text-gray-700 text-xs font-medium capitalize">
+          <span className="text-white text-xs font-medium capitalize">
             {avatarExpression.type}
           </span>
         </div>
@@ -154,14 +154,14 @@ export const TavusAvatarSection: React.FC = () => {
         <div className="absolute top-4 right-4">
           <Button
             onClick={toggleMute}
-            variant="outline"
+            variant="ghost"
             size="icon"
-            className="bg-white/90 backdrop-blur-sm border-gray-300 hover:bg-white"
+            className="bg-black/70 backdrop-blur-sm hover:bg-black/90"
           >
             {isMuted ? (
-              <VolumeX className="size-4 text-gray-600" />
+              <VolumeX className="size-4 text-white" />
             ) : (
-              <Volume2 className="size-4 text-gray-600" />
+              <Volume2 className="size-4 text-white" />
             )}
           </Button>
         </div>
